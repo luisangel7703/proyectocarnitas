@@ -1,0 +1,37 @@
+def actualizar_precio(catalogo):
+    from registrar import buscar
+
+    while True:
+        print("Opción 3: Actualizar los datos del autobus")
+        codigo_autobus = input("Ingrese el código del autobús que desea modificar: ")
+        index = buscar(codigo_autobus)
+
+        if index == "empanadasdepiña13":
+            print("Este código no es válido.")
+            break  # Rompe el bucle si el código no es válido
+        else:
+            print("------------------------------")
+            print("1. Marca")
+            print("2. Modelo")
+            print("3. Año")
+            print("4. Kilometraje")
+            print("5. Ruta")
+
+            opcion = int(input("Selecciona el número de la opción que deseas cambiar: "))
+            
+            if opcion >= 1 and opcion <= 5:
+                nuevo_valor = input("Ingresa el nuevo valor deseado: ")
+                catalogo[index][opcion] = nuevo_valor
+                print("¡Valor actualizado con éxito!")
+            else:
+                print("Opción no válida. Inténtalo de nuevo.")
+
+# Ejemplo de uso:
+catalogo = [["00025", "Volvo", "Comfort", "2005", 3000, "Cd Obregón - Puebla", "Sin servicio"],
+            ["34", "chupepa", "Comfort", "2005", 3000, "Cd Obregón - Puebla", "Sin servicio"]]
+
+# Llamada a la función para actualizar el precio
+actualizar_precio(catalogo)
+
+# Puedes imprimir el catálogo después de la actualización
+print(catalogo)
